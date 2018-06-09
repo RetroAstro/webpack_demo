@@ -1,0 +1,13 @@
+body {
+    background: #b2bbed;
+    & h1 {
+        color: #fff;
+    }
+    & div {
+        background: url('../assets/one.png') no-repeat;
+        background-size: contain;
+        transform: scale(1);
+        width: 100px;
+        height: 100px;
+    }
+}

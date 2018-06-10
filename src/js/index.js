@@ -7,4 +7,4 @@ require('../scss/index.scss');
 //     })
 // }
 
-console.log(2333);
+console.log(233);

@@ -39,14 +39,24 @@ module.exports = {
                                 minimize: true
                             }
                         },
-                        // postcss 添加浏览器前缀
+                        // postcss
                         {
                             loader: 'postcss-loader',
                             options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    require('autoprefixer')()
-                                ]
+                              ident: 'postcss',
+                              plugins: [
+                                require('postcss-import')(),
+                                require('autoprefixer')(),
+                                require('postcss-px-to-viewport')({
+                                    viewportWidth: 750,
+                                    viewportHeight: 1334,
+                                    unitPrecision: 3,
+                                    viewportUnit: 'vw',
+                                    selectorBlackList: ['.ignore', '.hairlines'],
+                                    minPixelValue: 1,
+                                    mediaQuery: false
+                                })
+                              ]
                             }
                         },
                         'sass-loader'

@@ -27,7 +27,7 @@ $ npm install webpack webpack-cli --save-dev
 ###### 基本前端开发环境的搭建 : 
 
 * 构建发布需要的 HTML 、CSS 、JS 文件
-* 使用 Sass 编写样式
+* 使用 Sass 编写样式, Postcss预处理CSS
 * 处理和压缩图片
 * 使用 Babel 来支持 ES 新特性
 * 提供本地静态服务以方便开发调试
@@ -88,12 +88,31 @@ module.exports = {
                 ],
                 use: 'babel-loader'
             },
-            // 解析CSS预处理器
+            // 使用CSS预处理器、后处理器
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
                         'css-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                              ident: 'postcss',
+                              plugins: [
+                                require('postcss-import')(),
+                                require('autoprefixer')(),
+                                require('postcss-px-to-viewport')({
+                                    viewportWidth: 750,
+                                    viewportHeight: 1334,
+                                    unitPrecision: 3,
+                                    viewportUnit: 'vw',
+                                    selectorBlackList: ['.ignore', '.hairlines'],
+                                    minPixelValue: 1,
+                                    mediaQuery: false
+                                })
+                              ]
+                            }
+                        },
                         'sass-loader'
                     ],
                     fallback: 'style-loader'

@@ -16,8 +16,10 @@ $ npm install webpack webpack-cli --save-dev
 // package.json
 
 "scripts": {
-    "build": "webpack --mode production", // 打包构建项目上线需要的文件
-    "start": "webpack-dev-server --mode development" // 搭建开发环境
+    "//": "打包构建项目上线需要的文件",
+    "build": "webpack --mode production", 
+    "//": "搭建开发环境",
+    "start": "webpack-dev-server --mode development"
 }
 
 ```
